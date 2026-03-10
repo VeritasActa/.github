@@ -4,19 +4,30 @@
 
 Veritas Acta builds open-source cryptographic infrastructure for anonymous credential verification, contestable public records, and privacy-preserving accountability.
 
-### Projects
+### Primitives
 
 | Project | Description | License |
 |---------|-------------|---------|
 | **[Acta](https://github.com/VeritasActa/Acta)** | A contestable, checkable, versioned public record for humans and AI | MIT |
 | **[@veritasacta/verify](https://github.com/VeritasActa/verify)** | Anonymous credential verification using VOPRF ([RFC 9497](https://datatracker.ietf.org/doc/rfc9497/)) | MIT |
 
+### Applications
+
+| Project | Description | License |
+|---------|-------------|---------|
+| **attestation** | Proof-of-unique-device — signed Ed25519 attestations via BRASS tokens | MIT |
+
 ### How it fits together
 
 ```
 Veritas Acta (open source, MIT)
-├── Acta ─── contestable public record
-└── verify ─ VOPRF verification primitive (npm: @veritasacta/verify)
+│
+│ Primitives
+├── Acta ─────── contestable public record
+├── verify ───── VOPRF verification primitive (npm: @veritasacta/verify)
+│
+│ Applications (built on the primitives)
+└── attestation ─ proof-of-unique-device (verify with limit=1 + Ed25519 sig)
 ```
 
 The **BRASS protocol** (Blind Rate-limiting with Anonymous Scope Separation) enables systems to count anonymous requests without learning who makes them. Tokens are issued blind, verified offline, and produce deterministic nullifiers bound to scope — not identity.
