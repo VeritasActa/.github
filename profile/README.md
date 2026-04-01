@@ -1,62 +1,60 @@
 # Veritas Acta
 
-**Primitives for trust, verification, and privacy.**
+**Open protocol for contestable public records.**
 
-Veritas Acta builds open-source cryptographic infrastructure for anonymous credential verification, contestable public records, and privacy-preserving accountability.
+Cryptographic infrastructure for trust, verification, and privacy-preserving accountability. Issuer-blind verification, signed artifacts, tamper-evident records. No surveillance required.
 
-### Primitives
-
-| Project | Description | License |
-|---------|-------------|---------|
-| **[Acta](https://github.com/VeritasActa/Acta)** | A contestable, checkable, versioned public record for humans and AI | MIT |
-| **[@veritasacta/verify](https://github.com/VeritasActa/verify)** | Anonymous credential verification using VOPRF ([RFC 9497](https://datatracker.ietf.org/doc/rfc9497/)) | MIT |
-
-### Applications
+### Core
 
 | Project | Description | License |
 |---------|-------------|---------|
-| **attestation** | Proof-of-unique-device — signed Ed25519 attestations via BRASS tokens | MIT |
+| **[@veritasacta/verify](https://github.com/VeritasActa/verify)** | Issuer-blind credential verification using VOPRF ([RFC 9497](https://datatracker.ietf.org/doc/rfc9497/)). Offline, deterministic. | Apache-2.0 |
+| **[@veritasacta/artifacts](https://www.npmjs.com/package/@veritasacta/artifacts)** | Signed artifact envelope — canonical JSON + Ed25519 signatures | Apache-2.0 |
+| **[@veritasacta/protocol](https://www.npmjs.com/package/@veritasacta/protocol)** | Protocol primitives for the Acta signed receipt format | Apache-2.0 |
+| **[Acta](https://github.com/VeritasActa/Acta)** | A contestable, checkable, versioned public record for humans and AI | Apache-2.0 |
 
-### How it fits together
+### Tools
+
+| Project | Description | License |
+|---------|-------------|---------|
+| **[acta-mcp](https://github.com/VeritasActa/acta-mcp)** | MCP server for contestable public records from AI coding tools | MIT |
+| **[acta-truth-check](https://github.com/VeritasActa/acta-truth-check)** | Independent external verification of Acta instance claims | MIT |
+| **attestation** | Proof-of-unique-device via BRASS tokens | MIT |
+
+### Architecture
 
 ```
-Veritas Acta (open source, MIT)
+Veritas Acta (open source)
 │
-│ Primitives
-├── Acta ─────── contestable public record
-├── verify ───── VOPRF verification primitive (npm: @veritasacta/verify)
+│ Protocol layer (Apache-2.0 — patent grant included)
+├── verify ─────── VOPRF issuer-blind verification (npm: @veritasacta/verify)
+├── artifacts ──── signed envelope format (npm: @veritasacta/artifacts)
+├── protocol ───── receipt primitives (npm: @veritasacta/protocol)
 │
-│ Applications (built on the primitives)
-└── attestation ─ proof-of-unique-device (verify with limit=1 + Ed25519 sig)
+│ Record layer
+├── Acta ────────── contestable public record (acta.today)
+│
+│ Tools (MIT)
+├── acta-mcp ────── MCP server for AI tools
+└── acta-truth-check ─ independent claim verification
 ```
 
-The **BRASS protocol** (Blind Rate-limiting with Anonymous Scope Separation) enables systems to count anonymous requests without learning who makes them. Tokens are issued blind, verified offline, and produce deterministic nullifiers bound to scope — not identity.
+### Key properties
 
-Acta provides a tamper-evident, append-only record where entries can be contested, superseded, and resolved — with anonymous but sybil-resistant authorship via BRASS tokens.
-
-### Design principles
-
-- **No surveillance required** — verify behaviour without tracking identity
+- **Issuer-blind** — the verifier never learns who issued the credential ([patent pending](https://scopeblind.com))
 - **Offline verification** — the issuer is never contacted at redemption
 - **Deterministic privacy** — same token + same scope = same nullifier; different scope = unlinkable
-- **Pluggable storage** — bring your own backend (KV, Redis, Durable Objects, in-memory)
-- **Audited dependencies** — built on [@noble/curves](https://github.com/paulmillr/noble-curves) and [@noble/hashes](https://github.com/paulmillr/noble-hashes)
+- **No surveillance required** — verify behaviour without tracking identity
+- **IETF standards track** — [draft-farley-acta-signed-receipts-00](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/)
 
-### Get started
+### Part of the ScopeBlind stack
 
-```bash
-npm install @veritasacta/verify
-```
-
-```js
-import { verify } from '@veritasacta/verify';
-
-const result = await verify(token, context, config, store);
-// { ok: true, nullifier: 'base64url...', remaining: 4 }
-```
+Veritas Acta is the open protocol layer. [ScopeBlind](https://scopeblind.com) is the commercial managed service for agent governance, dashboards, and enforcement. [protect-mcp](https://www.npmjs.com/package/protect-mcp) is the free gateway.
 
 ### Links
 
+- [acta.today](https://acta.today) — live public record instance
+- [scopeblind.com/verify](https://scopeblind.com/verify) — browser-based receipt verifier
+- [IETF Internet-Draft](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/)
 - [Protocol specification](https://github.com/VeritasActa/verify/blob/main/PROTOCOL.md)
-- [Acta Charter](https://github.com/VeritasActa/Acta/blob/main/CHARTER.md)
-- [npm package](https://www.npmjs.com/package/@veritasacta/verify)
+- [npm packages](https://www.npmjs.com/org/veritasacta)
