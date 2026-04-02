@@ -45,7 +45,7 @@ Veritas Acta (open source)
 - **Offline verification** — the issuer is never contacted at redemption
 - **Deterministic privacy** — same token + same scope = same nullifier; different scope = unlinkable
 - **No surveillance required** — verify behaviour without tracking identity
-- **IETF standards track** — [draft-farley-acta-signed-receipts-00](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/)
+- **IETF standards track** — [draft-farley-acta-signed-receipts-01](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/)
 
 ### Part of the ScopeBlind stack
 
