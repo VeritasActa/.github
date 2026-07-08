@@ -7,7 +7,8 @@ sensor outputs) produces an Ed25519-signed receipt. Anyone can verify the receip
 offline using only the public key. No vendor trust required, no phone-home.
 
 > **Receipt format:** ScopeBlind emits Veritas Acta receipts. Legacy ScopeBlind
-> receipts remain verifiable, but Acta v0.1 is the canonical format going forward.
+> receipts remain verifiable; Acta receipts are the canonical format going forward
+> (spec revision 02 on the datatracker).
 
 ## Start here
 
@@ -22,7 +23,7 @@ offline using only the public key. No vendor trust required, no phone-home.
 
 | Document | Where | Status |
 |---|---|---|
-| `draft-farley-acta-signed-receipts-01` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/) | Live IETF Internet-Draft (individual submission) |
+| `draft-farley-acta-signed-receipts-02` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/) | Live IETF Internet-Draft (individual submission) |
 | `draft-farley-acta-knowledge-units-00` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-knowledge-units/) | Live IETF Internet-Draft |
 | Receipt Format Specification | [github.com/VeritasActa/Acta](https://github.com/VeritasActa/Acta/blob/main/docs/protocol-spec.md) | v0.1 |
 | Charter (10 invariants) | [github.com/VeritasActa/Acta](https://github.com/VeritasActa/Acta/blob/main/CHARTER.md) | Ratified |
@@ -37,9 +38,12 @@ offline using only the public key. No vendor trust required, no phone-home.
 | [`@veritasacta/protocol`](https://npmjs.com/package/@veritasacta/protocol) | Receipt format types and conformance helpers | Apache-2.0 |
 | [`protect-mcp`](https://npmjs.com/package/protect-mcp) | Runtime receipt signing for MCP servers (Cedar policies, Ed25519) | MIT |
 | [`acta-mcp`](https://npmjs.com/package/acta-mcp) | MCP server exposing the Acta verifier as an agent tool | MIT |
+| [`legate-verify`](https://npmjs.com/package/legate-verify) | Standalone offline verifier for Legate cross-firm artifacts (covenant exports, co-signed certificates) | MIT |
 
 ## External adoption
 
+- **Microsoft AI Agents for Beginners** (68K+ stars): [Lesson 18, Securing AI Agents](https://github.com/microsoft/ai-agents-for-beginners/blob/main/18-securing-ai-agents/README.md) teaches the Acta receipt pattern from first principles and cites the Internet-Draft.
+- **ScopeBlind Legate** (production vertical): a finance mandate gate where every decision, including denials, is an Acta receipt verifiable offline by a risk committee or allocator. Two-minute demo films: [legate.scopeblind.com/record](https://legate.scopeblind.com/record).
 - **Microsoft Agent Governance Toolkit**: listed as [Appendix A.9 conformant implementation](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/) in the IETF draft. Tutorial 33 covers offline-verifiable decision receipts. Tutorial 46 covers selective-disclosure receipts via RFC 6962 Merkle commitments.
 - **AWS Cedar**: integrated as policy backend for `protect-mcp`. Two PRs merged in `cedar-policy/cedar-for-agents`.
 - **Foundation submissions in flight**: Microsoft AGT submitted to AAIF, OpenSSF (Sandbox), LF AI & Data, CoSAI / OASIS WS4, OWASP ASI, MITRE ATLAS, with the Acta receipt format cited as the open-standards integration evidence.
