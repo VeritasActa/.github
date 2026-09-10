@@ -8,7 +8,7 @@ offline using only the public key. No vendor trust required, no phone-home.
 
 > **Receipt format:** ScopeBlind emits Veritas Acta receipts. Legacy ScopeBlind
 > receipts remain verifiable; Acta receipts are the canonical format going forward
-> (spec revision 02 on the datatracker).
+> (spec revision 03 on the datatracker).
 
 ## Start here
 
@@ -23,7 +23,7 @@ offline using only the public key. No vendor trust required, no phone-home.
 
 | Document | Where | Status |
 |---|---|---|
-| `draft-farley-acta-signed-receipts-02` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/) | Live IETF Internet-Draft (individual submission) |
+| `draft-farley-acta-signed-receipts-03` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/) | Live IETF Internet-Draft (individual submission) |
 | `draft-farley-acta-knowledge-units-00` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-knowledge-units/) | Live IETF Internet-Draft |
 | Receipt Format Specification | [github.com/VeritasActa/Acta](https://github.com/VeritasActa/Acta/blob/main/docs/protocol-spec.md) | v0.1 |
 | Charter (10 invariants) | [github.com/VeritasActa/Acta](https://github.com/VeritasActa/Acta/blob/main/CHARTER.md) | Ratified |
@@ -42,7 +42,7 @@ offline using only the public key. No vendor trust required, no phone-home.
 
 ## External adoption
 
-- **Microsoft AI Agents for Beginners** (68K+ stars): [Lesson 18, Securing AI Agents](https://github.com/microsoft/ai-agents-for-beginners/blob/main/18-securing-ai-agents/README.md) teaches the Acta receipt pattern from first principles and cites the Internet-Draft.
+- **Microsoft AI Agents for Beginners** (74K+ stars): [Lesson 18, Securing AI Agents](https://github.com/microsoft/ai-agents-for-beginners/blob/main/18-securing-ai-agents/README.md) teaches the Acta receipt pattern from first principles and cites the Internet-Draft.
 - **ScopeBlind Legate** (production vertical): a finance mandate gate where every decision, including denials, is an Acta receipt verifiable offline by a risk committee or allocator. Two-minute demo films: [legate.scopeblind.com/record](https://legate.scopeblind.com/record).
 - **Microsoft Agent Governance Toolkit**: listed as [Appendix A.9 conformant implementation](https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/) in the IETF draft. Tutorial 33 covers offline-verifiable decision receipts. Tutorial 46 covers selective-disclosure receipts via RFC 6962 Merkle commitments.
 - **AWS Cedar**: integrated as policy backend for `protect-mcp`. Two PRs merged in `cedar-policy/cedar-for-agents`.
