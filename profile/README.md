@@ -2,6 +2,8 @@
 
 **Open protocol for signed, independently verifiable machine decisions.**
 
+> **Check something real today:** [verified-runs-grader](https://github.com/VeritasActa/verified-runs-grader) grades other organizations' AI agent runs in its own workflow and attests the grading; [`@veritasacta/verify`](https://www.npmjs.com/package/@veritasacta/verify) checks a whole run offline, gradings and provenance included. [The live run](https://legate.scopeblind.com/verify?sample=run).
+
 Every consequential machine action (tool calls, delegations, policy evaluations,
 sensor outputs) produces an Ed25519-signed receipt. Anyone can verify the receipt
 offline using only the public key. No vendor trust required, no phone-home.
