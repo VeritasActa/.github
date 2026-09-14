@@ -29,13 +29,13 @@ offline using only the public key. No vendor trust required, no phone-home.
 | `draft-farley-acta-knowledge-units-00` | [datatracker.ietf.org](https://datatracker.ietf.org/doc/draft-farley-acta-knowledge-units/) | Live IETF Internet-Draft |
 | Receipt Format Specification | [github.com/VeritasActa/Acta](https://github.com/VeritasActa/Acta/blob/main/docs/protocol-spec.md) | v0.1 |
 | Charter (10 invariants) | [github.com/VeritasActa/Acta](https://github.com/VeritasActa/Acta/blob/main/CHARTER.md) | Ratified |
-| Cross-implementation conformance fixtures | [github.com/ScopeBlind/agent-governance-testvectors](https://github.com/ScopeBlind/agent-governance-testvectors) | 14+ implementations cross-verifying byte-identical canonical output |
+| Conformance corpus | [github.com/ScopeBlind/agent-governance-testvectors](https://github.com/ScopeBlind/agent-governance-testvectors) | Three independent implementations conformant (protect-mcp, nobulex, the APS governance hook); schema, signature, chain, and policy-digest checks; negative vectors |
 
 ## Implementations
 
 | Package | Purpose | License |
 |---|---|---|
-| [`@veritasacta/verify`](https://npmjs.com/package/@veritasacta/verify) | Unified offline verifier (Ed25519, VOPRF, selective disclosure, Knowledge Units) | Apache-2.0 |
+| [`@veritasacta/verify`](https://npmjs.com/package/@veritasacta/verify) | Offline verifier: receipts, standards, run manifests, decisions, provenance, attestation (0.10.13) | Apache-2.0 |
 | [`@veritasacta/artifacts`](https://npmjs.com/package/@veritasacta/artifacts) | Signed artifact envelope (canonical JCS, Ed25519) | Apache-2.0 |
 | [`@veritasacta/protocol`](https://npmjs.com/package/@veritasacta/protocol) | Receipt format types and conformance helpers | Apache-2.0 |
 | [`protect-mcp`](https://npmjs.com/package/protect-mcp) | Runtime receipt signing for MCP servers (Cedar policies, Ed25519) | MIT |
